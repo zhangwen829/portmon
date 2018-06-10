@@ -6,3 +6,5 @@ const Security = db.define('portfolio_metadata', {
   ticker: {type: Sequelize.STRING, allowNull: false},
   type: {type: Sequelize.ENUM('EQUITY, BOND'), allowNull: false}
 });
+
+module.exports = Security;

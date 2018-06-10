@@ -11,3 +11,5 @@ const PortfolioData = db.define('portfolio_data', {
 
 PortfolioData.belongsTo(PortfolioMetadata);
 // TOOD(zhangwen829), security and portfolio_data is many-to-many.
+
+module.exports = PortfolioData;
