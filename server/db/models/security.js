@@ -1,11 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../db');
 
-const Security = db.define('portfolio_metadata', {
-  id: {
-    type: Sequelize.UUID,
-    primaryKey: true
-  },
+const Security = db.define('security', {
   ticker: {
     type: Sequelize.STRING,
     allowNull: false

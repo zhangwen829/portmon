@@ -1,6 +1,6 @@
 const User = require('./user');
 const Security = require('./security');
-const PortfolioMetadata = require('./portfolio_data');
+const PortfolioMetadata = require('./portfolio_metadata');
 const PortfolioData = require('./portfolio_data');
 
 // one user can have many portfolios
@@ -16,4 +16,4 @@ PortfolioMetadata.hasMany(PortfolioData);
 PortfolioData.belongsTo(Security);
 Security.hasMany(PortfolioData);
 
-module.exports = {User, Security, PortfolioMetadata, PortfolioData};
+module.exports = { User, Security, PortfolioMetadata, PortfolioData };
