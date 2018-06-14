@@ -17,8 +17,8 @@ const PortfolioMetadata = db.define('portfolio_metadata', {
 });
 
 
-PortfolioMetadata.getPortfolioMetadataByUserId = async function(userId) {
-  // TODO(zhangwen829), fill in the logic here.
+PortfolioMetadata.getPortfolioMetadataByUserId = async (userId) => {
+  this.findOne({ where: { userId } });
 };
 
 module.exports = PortfolioMetadata;
