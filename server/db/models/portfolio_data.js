@@ -8,4 +8,10 @@ const PortfolioData = db.define('portfolio_data', {
   },
 });
 
+PortfolioData.listPortfolioDataByPortfolioMetadataId = function (portfolioMetadatumId) {
+  return this.findAll({
+    where: { portfolioMetadatumId }
+  });
+};
+
 module.exports = PortfolioData;
