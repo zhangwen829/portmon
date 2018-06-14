@@ -2,10 +2,6 @@ const Sequelize = require('sequelize');
 const db = require('../db');
 
 const Security = db.define('security', {
-  // id: {
-  //   type: Sequelize.UUID,
-  //   primaryKey: true
-  // },
   ticker: {
     type: Sequelize.STRING,
     allowNull: false
