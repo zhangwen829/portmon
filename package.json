@@ -18,9 +18,20 @@
   "author": "Wen Zhang",
   "license": "MIT",
   "dependencies": {
+    "@material-ui/core": "^1.2.1",
+    "@material-ui/icons": "^1.1.0",
+    "body-parser": "^1.18.3",
+    "compression": "^1.7.2",
+    "connect-session-sequelize": "^5.2.1",
     "express": "^4.14.1",
-    "sequelize": "^4.3.1",
-    "socket.io": "^2.0.3"
+    "express-session": "^1.15.6",
+    "morgan": "^1.9.0",
+    "passport": "^0.4.0",
+    "pg": "^7.4.3",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "sequelize": "^4.37.10",
+    "socket.io": "^2.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.40",
@@ -29,6 +40,8 @@
     "@babel/preset-react": "^7.0.0-beta.40",
     "@babel/preset-stage-2": "^7.0.0-beta.40",
     "@babel/register": "^7.0.0-beta.40",
+    "babel-eslint": "^8.2.2",
+    "babel-loader": "^8.0.0-beta.2",
     "chai": "^3.5.0",
     "mocha": "^3.3.0",
     "nodemon": "^1.12.1",
