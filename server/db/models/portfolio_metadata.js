@@ -16,31 +16,23 @@ const PortfolioMetadata = db.define('portfolio_metadata', {
   }
 });
 
-// CURD - Read
-// Class Method
-PortfolioMetadata.getPortfolioMetadataByUserId = (userId) => {
-  this.findAll({ where: { userId } });
-};
 
-// CURD - Create
-// Class Method
-PortfolioMetadata.createNewPortfolio = (portfolioName) => {
-  this.create({
-    name: portfolioName
+PortfolioMetadata.listPortfolioMetadataByUserId = (userId) => {
+  this.findAll({
+    where: { userId }
   });
 };
 
-// CURD - Update
-// Instance Method
-PortfolioMetadata.prototype.changePortfolioName = async (portfolioId, newName) => {
-  const portfolio = await this.findOne({ where: { portfolioId } });
-  portfolio.name = newName;
+PortfolioMetadata.createPortfolioMetadata = (portfolio) => {
+  this.create({
+    name: portfolio.name
+  });
 };
 
-// CURD - Delete
-// Instance Method
-PortfolioMetadata.prototype.deletePortfolio = (portfolioId) => {
-  PortfolioMetadata.destroy({ where: { portfolioId } });
+PortfolioMetadata.deletePortfolioMetadata = (portfolioId) => {
+  PortfolioMetadata.destroy({
+    where: { id: portfolioId }
+  });
 };
 
 module.exports = PortfolioMetadata;
