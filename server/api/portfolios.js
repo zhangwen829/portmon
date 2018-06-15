@@ -1,28 +1,49 @@
 const router = require('express').Router();
-const {PortfolioMetadata} = require('../db/models');
+const { PortfolioMetadata } = require('../db/models');
 module.exports = router;
 
-router.get(
-    '/user/:userId',
-    (req, res, next) => {
-        // TODO(zhangwen829), get all portfolio (metadata) belongs to this user.
-    });
+router.get('/user/:userId', async (req, res, next) => {
+  try {
+    const portfolio = await PortfolioMetadata.listPortfolioMetadataByUserId(req.params.Id);
+    res.json(portfolio);
+  } catch (error) {
+    next(error);
+  }
+});
 
-router.post(
-    '/user/:userId', (req, res, next) => {
-                         // TODO(zhangwen829), add a new portfolio (metadata)
-                         // belongs to this user.
-                     });
-
-router.delete(
-    '/:portfoiloId',
-    (req, res, next) => {
-        // TODO(zhangwen829), delete an existing portfolio (metadata)
-        // belongs to this user.
+router.post('/user/:userId', async (req, res, next) => {
+  try {
+    const created = await PortfolioMetadata.create({
+      name: req.body.name,
+      userId: req.params.id
     });
+    res.json(created);
+  } catch (error) {
+    next(error);
+  }
+});
 
-router.put(
-    '/:portfoiloId',
-    (req, res, next) => {
-        // TODO(zhangwen829), add/delete security + position within a portfolio
+router.delete('/:portfoiloId', async (req, res, next) => {
+  try {
+    await PortfolioMetadata.destroy({
+      where: {
+        id: req.params.id
+      }
     });
+    res.status(204).end();
+  } catch (error) {
+    next(error);
+  }
+});
+
+
+router.put('/:portfoiloId', async (req, res, next) => {
+  try {
+    const portfolio = await PortfolioMetadata.findById(req.params.id);
+    const updated = await portfolio.update(req.body);
+    res.json(updated);
+  }
+  catch (error) {
+    next(error);
+  }
+});
