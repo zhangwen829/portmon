@@ -1,1 +1,2 @@
-export { default as MonitorTable } from './monitor_table';
+export { default as MonitorTable } from './MonitorTable';
+export { default as SideMenu } from './SideMenu';
