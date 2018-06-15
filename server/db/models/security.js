@@ -7,7 +7,7 @@ const Security = db.define('security', {
     allowNull: false
   },
   type: {
-    type: Sequelize.ENUM('EQUITY, BOND'),
+    type: Sequelize.ENUM('EQUITY', 'BOND'),
     allowNull: false
   }
 });
