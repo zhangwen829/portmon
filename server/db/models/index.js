@@ -3,12 +3,8 @@ const Security = require('./security');
 const PortfolioMetadata = require('./portfolio_metadata');
 const PortfolioData = require('./portfolio_data');
 
-// one user can have many portfolios
 PortfolioMetadata.belongsTo(User);
 User.hasMany(PortfolioMetadata);
-
-// one portfolio can have many securities
-// one security belongs to many portfolios
 
 PortfolioData.belongsTo(PortfolioMetadata);
 PortfolioMetadata.hasMany(PortfolioData);
