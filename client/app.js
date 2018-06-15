@@ -9,6 +9,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { MonitorTable } from './components';
 import MenuList from '@material-ui/core/MenuList';
 import MenuItem from '@material-ui/core/MenuItem';
+import ListItemText from '@material-ui/core/ListItemText';
 
 const styles = theme => ({
   root: {
@@ -23,18 +24,21 @@ class App extends React.Component {
       <div className={classes.root}>
         <MenuList>
           <MenuItem>
-            <ListItem button>
+            <ListItem>
               <ListItemIcon><AccountBox /></ListItemIcon>
+              <ListItemText inset primary="User" />
             </ListItem>
           </MenuItem>
           <MenuItem>
-            <ListItem button>
+            <ListItem>
               <ListItemIcon><InboxIcon /></ListItemIcon>
+              <ListItemText inset primary="Portfolio" />
             </ListItem>
           </MenuItem>
           <MenuItem>
-            <ListItem button>
+            <ListItem>
               <ListItemIcon><InboxIcon /></ListItemIcon>
+              <ListItemText inset primary="Settings" />
             </ListItem>
           </MenuItem>
         </MenuList>
