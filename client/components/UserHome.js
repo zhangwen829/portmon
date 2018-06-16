@@ -1,5 +1,5 @@
 import React from 'react';
-import {PortfolioContainer,SideMenu} from '../components';
+import {PortfolioContainer, SideMenu} from '../components';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({

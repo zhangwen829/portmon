@@ -1,20 +1,21 @@
-import {withStyles} from '@material-ui/core/styles';
 import React from 'react';
-import {PortfolioSelector} from '../components';
+import { MonitorTable, PortfolioSelector } from '../components';
 
-const styles = theme => ({
-  root: {
-    display: 'flex',
-  },
-});
 
-const PortfolioContainer = (props) => {
-  const { classes } = props;
-  return (
-    <div className={classes.root}>
-      <PortfolioSelector />
-    </div>
-  );
-};
+class PortfolioContainer extends React.Component {
+  state = {
+    direction: 'row',
+    justify: 'flex-start',
+    alignItems: 'flex-start',
+  };
+  render() {
+    return (
+      <div>
+        <PortfolioSelector />
+        <MonitorTable />
+      </div>
+    );
+  }
+}
 
-export default withStyles(styles, { withTheme: true })(PortfolioContainer);
+export default PortfolioContainer;
