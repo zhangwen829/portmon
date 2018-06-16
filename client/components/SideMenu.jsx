@@ -13,13 +13,16 @@ const styles = theme => ({
   root: {
     display: 'flex',
   },
+  list: {
+    backgroundColor: '#9E9E9E'
+  }
 });
 
 const SideMenu = (props) => {
   const { classes } = props;
   return (
     <div className={classes.root}>
-      <MenuList>
+      <MenuList className={classes.list}>
         <MenuItem>
           <ListItem>
             <ListItemIcon><AccountBox /></ListItemIcon>

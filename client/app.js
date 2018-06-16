@@ -8,7 +8,7 @@ const App = () => {
       <UserHome />
       <Routes />
     </div>
-  )
-}
+  );
+};
 
 export default App;

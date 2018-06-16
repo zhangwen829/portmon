@@ -10,6 +10,7 @@ const styles = theme => ({
   root: {
     display: 'flex',
     flexWrap: 'wrap',
+    margin: theme.spacing.unit * 5
   },
   formControl: {
     margin: theme.spacing.unit,
@@ -36,14 +37,10 @@ class PortfolioSelector extends React.Component {
     return (
       <form className={classes.root}>
         <FormControl className={classes.formControl}>
-          <InputLabel htmlFor="my-portfolio">My Portfolios</InputLabel>
+          <InputLabel>My Portfolios</InputLabel>
           <Select
             value={this.state.portfolio}
             onChange={this.handleChange}
-            inputProps={{
-              name: 'portfolio',
-              id: 'my-portfolio',
-            }}
           >
             <MenuItem value=""><em>None</em></MenuItem>
             <MenuItem value={1}>Portfolio #1</MenuItem>
