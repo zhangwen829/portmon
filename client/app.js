@@ -1,5 +1,5 @@
 import React from 'react';
-import { SideMenu } from './components';
+import {SideMenu} from './components';
 import Routes from './routes';
 
 const App = () => {

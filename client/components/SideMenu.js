@@ -39,7 +39,6 @@ const SideMenu = (props) => {
           </ListItem>
         </MenuItem>
       </MenuList>
-      <MonitorTable />
     </div>
   );
 }
