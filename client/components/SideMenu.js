@@ -1,7 +1,7 @@
 import React from 'react';
-import MonitorTable from './MonitorTable';
 import AccountBox from '@material-ui/icons/AccountBox';
-import InboxIcon from '@material-ui/icons/Inbox';
+import Assessment from '@material-ui/icons/Assessment';
+import Settings from '@material-ui/icons/Settings';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import MenuList from '@material-ui/core/MenuList';
@@ -28,13 +28,13 @@ const SideMenu = (props) => {
         </MenuItem>
         <MenuItem>
           <ListItem>
-            <ListItemIcon><InboxIcon /></ListItemIcon>
+            <ListItemIcon><Assessment /></ListItemIcon>
             <ListItemText inset primary="Portfolio" />
           </ListItem>
         </MenuItem>
         <MenuItem>
           <ListItem>
-            <ListItemIcon><InboxIcon /></ListItemIcon>
+            <ListItemIcon><Settings /></ListItemIcon>
             <ListItemText inset primary="Settings" />
           </ListItem>
         </MenuItem>

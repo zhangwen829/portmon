@@ -1,11 +1,10 @@
+import React from 'react';
 import FormControl from '@material-ui/core/FormControl';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
-import {withStyles} from '@material-ui/core/styles';
-import React from 'react';
+import { withStyles } from '@material-ui/core/styles';
+
 
 const styles = theme => ({
   root: {
@@ -28,22 +27,22 @@ class PortfolioSelector extends React.Component {
   };
 
   handleChange = event => {
-    this.setState({portfolio: event.target.value});
+    this.setState({ portfolio: event.target.value });
   };
 
   render() {
-    const {classes} = this.props;
+    const { classes } = this.props;
 
     return (
       <form className={classes.root}>
         <FormControl className={classes.formControl}>
-          <InputLabel htmlFor='portfolio-simple'>My Portfolios</InputLabel>
+          <InputLabel htmlFor="my-portfolio">My Portfolios</InputLabel>
           <Select
             value={this.state.portfolio}
             onChange={this.handleChange}
             inputProps={{
               name: 'portfolio',
-              id: 'portfolio-simple',
+              id: 'my-portfolio',
             }}
           >
             <MenuItem value=""><em>None</em></MenuItem>
