@@ -1,9 +1,12 @@
+const Session = require('../portcalc/Session');
+const SessionPortfolio = require('../portcalc/SessionPortfolio');
 module.exports = (io) => {
-  io.on('connection', (socket) => {
-    console.log(`A socket connection to the server has been made: ${socket.id}`)
+  io.on('connection', async(socket) => {
+    const sessionPortfolio =
+        await SessionPortfolio.create(socket.handshake.query.portfolioId);
+    const session = new Session(socket, sessionPortfolio);
+    session.startToRun();
 
-    socket.on('disconnect', () => {
-      console.log(`Connection ${socket.id} has left the building`)
-    })
+    socket.on('disconnect', () => { session.stopRunning(); });
   })
 }

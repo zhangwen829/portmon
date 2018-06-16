@@ -5,8 +5,19 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import io from 'socket.io-client';
 
 class MonitorTable extends React.Component {
+  componentDidMount() {
+    this.socket = io(window.location.origin, {
+      query: {
+        portfolioId: 1
+      }
+    });
+    this.socket.on('data_update', (msg) => {
+      console.log(msg);
+    });
+  }
   render() {
     return (
       <Paper>
