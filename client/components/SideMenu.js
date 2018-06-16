@@ -17,35 +17,33 @@ const styles = theme => ({
   },
 });
 
-class SideMenu extends React.Component {
-  render() {
-    const { classes } = this.props;
-    return (
-      <div className={classes.root}>
-        <MenuList>
-          <MenuItem>
-            <ListItem>
-              <ListItemIcon><AccountBox /></ListItemIcon>
-              <ListItemText inset primary="User" />
-            </ListItem>
-          </MenuItem>
-          <MenuItem>
-            <ListItem>
-              <ListItemIcon><InboxIcon /></ListItemIcon>
-              <ListItemText inset primary="Portfolio" />
-            </ListItem>
-          </MenuItem>
-          <MenuItem>
-            <ListItem>
-              <ListItemIcon><InboxIcon /></ListItemIcon>
-              <ListItemText inset primary="Settings" />
-            </ListItem>
-          </MenuItem>
-        </MenuList>
-        <MonitorTable />
-      </div>
-    );
-  }
+const SideMenu = (props) => {
+  const { classes } = props;
+  return (
+    <div className={classes.root}>
+      <MenuList>
+        <MenuItem>
+          <ListItem>
+            <ListItemIcon><AccountBox /></ListItemIcon>
+            <ListItemText inset primary="User" />
+          </ListItem>
+        </MenuItem>
+        <MenuItem>
+          <ListItem>
+            <ListItemIcon><InboxIcon /></ListItemIcon>
+            <ListItemText inset primary="Portfolio" />
+          </ListItem>
+        </MenuItem>
+        <MenuItem>
+          <ListItem>
+            <ListItemIcon><InboxIcon /></ListItemIcon>
+            <ListItemText inset primary="Settings" />
+          </ListItem>
+        </MenuItem>
+      </MenuList>
+      <MonitorTable />
+    </div>
+  );
 }
 
 export default withStyles(styles, { withTheme: true })(SideMenu);
