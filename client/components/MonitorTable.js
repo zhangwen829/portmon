@@ -7,48 +7,37 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import io from 'socket.io-client';
 
-class MonitorTable extends React.Component {
-  componentDidMount() {
-    this.socket = io(window.location.origin, {
-      query: {
-        portfolioId: 1
-      }
-    });
-    this.socket.on('data_update', (msg) => {
-      console.log(msg);
-    });
-  }
-  render() {
-    return (
-      <Paper>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>Ticker</TableCell>
-              <TableCell numeric>Position</TableCell>
-              <TableCell numeric>Last Price</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            <TableRow>
-              <TableCell>GOOG</TableCell>
-              <TableCell numeric>10</TableCell>
-              <TableCell numeric>1001</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>IBM</TableCell>
-              <TableCell numeric>100</TableCell>
-              <TableCell numeric>137</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>AMZN</TableCell>
-              <TableCell numeric>38</TableCell>
-              <TableCell numeric>1907</TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
-      </Paper>
-    );
-  }
-}
+const MonitorTable = () => {
+  return (
+    <Paper>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>Ticker</TableCell>
+            <TableCell numeric>Position</TableCell>
+            <TableCell numeric>Last Price</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          <TableRow>
+            <TableCell>GOOG</TableCell>
+            <TableCell numeric>10</TableCell>
+            <TableCell numeric>1001</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>IBM</TableCell>
+            <TableCell numeric>100</TableCell>
+            <TableCell numeric>137</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>AMZN</TableCell>
+            <TableCell numeric>38</TableCell>
+            <TableCell numeric>1907</TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    </Paper>
+  );
+};
+
 export default MonitorTable;

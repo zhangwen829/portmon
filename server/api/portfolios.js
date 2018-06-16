@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { PortfolioMetadata } = require('../db/models');
+const {PortfolioMetadata} = require('../db/models');
 module.exports = router;
 
 router.get('/user/:userId', async (req, res, next) => {
@@ -10,6 +10,7 @@ router.get('/user/:userId', async (req, res, next) => {
     next(error);
   }
 });
+
 
 router.post('/user/:userId', async (req, res, next) => {
   try {
