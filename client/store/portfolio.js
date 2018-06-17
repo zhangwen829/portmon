@@ -2,11 +2,13 @@ import axios from 'axios';
 
 const GET_PORTFOLIOS = 'GET_PORTFOLIOS';
 const CREATE_PORTFOLIO = 'CREATE_PORTFOLIO';
-
+const SET_CURRENT_PORTFOLIO = 'SET_CURRENT_PORTFOLIO';
 
 const getPortfolios = myPortfolios => ({type: GET_PORTFOLIOS, myPortfolios});
 const createPortfolio = newPortfolio =>
     ({type: CREATE_PORTFOLIO, newPortfolio});
+export const setCurrentPortfolio = currentPortfolioId =>
+    ({type: SET_CURRENT_PORTFOLIO, currentPortfolioId});
 
 export const fetchPortfolios = (userId) => {
   return async dispatch => {
@@ -22,12 +24,22 @@ export const addPortfolio = (userId) => {
   };
 };
 
-const portfolioReducer = (state = [], action) => {
+const initialState = {
+  myPortfolios: [],
+  currentPortfolioId: -1
+};
+
+const portfolioReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_PORTFOLIOS:
-      return action.myPortfolios;
+      return {...state, myPortfolios: action.myPortfolios};
     case CREATE_PORTFOLIO:
-      return [...state, action.newPortfolio];
+      return {
+        ...state,
+        myportfolios: [...state.myfortfolios, action.newPortfolio]
+      };
+    case SET_CURRENT_PORTFOLIO:
+      return {...state, currentPortfolioId: action.currentPortfolioId};
     default:
       return state;
   }

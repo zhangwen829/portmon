@@ -7,7 +7,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import { withStyles } from '@material-ui/core/styles';
 import Trend from 'react-trend';
-import io from 'socket.io-client';
+import { connect } from 'react-redux';
 
 const styles = theme => ({
   root: {
@@ -23,7 +23,7 @@ const styles = theme => ({
 });
 
 const MonitorTable = (props) => {
-  const { classes } = props;
+  const { classes, sessionSecurities } = props;
   return (
     <Paper className={classes.root}>
       <Table className={classes.table}>
@@ -36,29 +36,23 @@ const MonitorTable = (props) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          <TableRow>
-            <TableCell className={classes.cell}>GOOG</TableCell>
-            <TableCell className={classes.cell} numeric>10</TableCell>
-            <TableCell className={classes.cell} numeric>1001</TableCell>
-            <TableCell><Trend data={[0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0]} /></TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell className={classes.cell}>IBM</TableCell>
-            <TableCell className={classes.cell} numeric>100</TableCell>
-            <TableCell className={classes.cell} numeric>137</TableCell>
-            <TableCell><Trend data={[0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0]} /></TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell className={classes.cell}>AMZN</TableCell>
-            <TableCell className={classes.cell} numeric>38</TableCell>
-            <TableCell className={classes.cell} numeric>1907</TableCell>
-            <TableCell><Trend data={[0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0]} /></TableCell>
-          </TableRow>
+          {/* {
+            sessionSecurities.map(sessionSecurity => (
+              <TableRow key={sessionSecurity.id}>
+                <TableCell className={classes.cell}>{sessionSecurity.ticker}</TableCell>
+                <TableCell className={classes.cell} numeric>{sessionSecurity.position}</TableCell>
+                <TableCell className={classes.cell} numeric>{sessionSecurity.lastPrice}</TableCell>
+                <TableCell><Trend data={[0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0]} /></TableCell>
+              </TableRow>)
+            )
+          } */}
         </TableBody>
       </Table>
     </Paper>
   );
 };
+const mapStateToProps = (state) => ({
+  sessionSecurities: state.sessionSecurities,
+});
 
-
-export default withStyles(styles)(MonitorTable);
+export default withStyles(styles)(connect(mapStateToProps)(MonitorTable));
