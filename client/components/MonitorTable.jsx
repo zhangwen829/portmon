@@ -8,7 +8,6 @@ import TableRow from '@material-ui/core/TableRow';
 import { withStyles } from '@material-ui/core/styles';
 import Trend from 'react-trend';
 import { connect } from 'react-redux';
-
 const styles = theme => ({
   root: {
     margin: theme.spacing.unit * 5
@@ -36,8 +35,8 @@ const MonitorTable = (props) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {/* {
-            sessionSecurities.map(sessionSecurity => (
+          {
+            Array.of(...sessionSecurities.values()).map(sessionSecurity => (
               <TableRow key={sessionSecurity.id}>
                 <TableCell className={classes.cell}>{sessionSecurity.ticker}</TableCell>
                 <TableCell className={classes.cell} numeric>{sessionSecurity.position}</TableCell>
@@ -45,14 +44,14 @@ const MonitorTable = (props) => {
                 <TableCell><Trend data={[0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0]} /></TableCell>
               </TableRow>)
             )
-          } */}
+          }
         </TableBody>
       </Table>
     </Paper>
   );
 };
 const mapStateToProps = (state) => ({
-  sessionSecurities: state.sessionSecurities,
+  sessionSecurities: state.portfolios.sessionSecurities,
 });
 
 export default withStyles(styles)(connect(mapStateToProps)(MonitorTable));

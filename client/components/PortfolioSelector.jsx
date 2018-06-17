@@ -5,7 +5,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
-import { fetchPortfolios, setCurrentPortfolio } from '../store/portfolio';
+import { fetchPortfolios, clearSessionSecurities, setCurrentPortfolio, subscribePortfolio } from '../store/portfolio';
 
 const styles = theme => ({
   root: {
@@ -31,6 +31,8 @@ class PortfolioSelector extends React.Component {
 
   handleChange = event => {
     this.props.setCurrentPortfolio(event.target.value);
+    this.props.clearSessionSecurities();
+    this.props.subscribePortfolio(event.target.value);
   };
 
   render() {
@@ -65,7 +67,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = dispatch => {
   return {
     fetchPortfolios: (userId) => dispatch(fetchPortfolios(userId)),
-    setCurrentPortfolio: (currentPortfolioId) => dispatch(setCurrentPortfolio(currentPortfolioId))
+    setCurrentPortfolio: (currentPortfolioId) => dispatch(setCurrentPortfolio(currentPortfolioId)),
+    subscribePortfolio: (currentPortfolioId) => dispatch(subscribePortfolio(currentPortfolioId)),
+    clearSessionSecurities: () => dispatch(clearSessionSecurities())
   };
 };
 
