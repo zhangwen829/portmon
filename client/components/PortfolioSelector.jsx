@@ -5,7 +5,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
-import { fetchPortfolios } from '../store/portfolio';
+import { fetchPortfolios, clearSessionSecurities, setCurrentPortfolio, subscribePortfolio } from '../store/portfolio';
 
 const styles = theme => ({
   root: {
@@ -24,29 +24,29 @@ const styles = theme => ({
 
 
 class PortfolioSelector extends React.Component {
-  state = {
-    currentPortfolio: '',
-  }
+
   componentDidMount() {
     this.props.fetchPortfolios(1);
   }
 
   handleChange = event => {
-    this.setState({ currentPortfolio: event.target.value });
+    this.props.setCurrentPortfolio(event.target.value);
+    this.props.clearSessionSecurities();
+    this.props.subscribePortfolio(event.target.value);
   };
 
   render() {
-    const { classes, myPortfolioMetadata } = this.props;
+    const { classes, myPortfolioMetadata, currentPortfolioId } = this.props;
 
     return (
       <form className={classes.root}>
         <FormControl className={classes.formControl}>
           <InputLabel>My Portfolios</InputLabel>
           <Select
-            value={this.state.currentPortfolio}
+            value={currentPortfolioId}
             onChange={this.handleChange}
           >
-            <MenuItem value=""><em>None</em></MenuItem>
+            <MenuItem value={-1}><em>None</em></MenuItem>
             {
               myPortfolioMetadata.map(portfolioMetdata =>
                 <MenuItem key={portfolioMetdata.id} value={portfolioMetdata.id}>{portfolioMetdata.name}</MenuItem>
@@ -60,12 +60,16 @@ class PortfolioSelector extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  myPortfolioMetadata: state.portfolios,
+  myPortfolioMetadata: state.portfolios.myPortfolios,
+  currentPortfolioId: state.portfolios.currentPortfolioId
 });
 
 const mapDispatchToProps = dispatch => {
   return {
     fetchPortfolios: (userId) => dispatch(fetchPortfolios(userId)),
+    setCurrentPortfolio: (currentPortfolioId) => dispatch(setCurrentPortfolio(currentPortfolioId)),
+    subscribePortfolio: (currentPortfolioId) => dispatch(subscribePortfolio(currentPortfolioId)),
+    clearSessionSecurities: () => dispatch(clearSessionSecurities())
   };
 };
 
