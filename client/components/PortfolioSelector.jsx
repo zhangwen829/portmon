@@ -5,7 +5,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
-import gotPortfolios from '../store/portfolio';
+import { fetchPortfolios } from '../store/portfolio';
 
 const styles = theme => ({
   root: {
@@ -28,10 +28,7 @@ class PortfolioSelector extends React.Component {
     currentPortfolio: '',
   }
   componentDidMount() {
-    console.log('component did mount');
-    console.log('PROP', this.props);
-    this.props.gotPortfolios(1);
-    console.log('_______');
+    this.props.fetchPortfolios(1);
   }
 
   handleChange = event => {
@@ -39,7 +36,7 @@ class PortfolioSelector extends React.Component {
   };
 
   render() {
-    const { classes, allPortfolioMetadata } = this.props;
+    const { classes, myPortfolioMetadata } = this.props;
 
     return (
       <form className={classes.root}>
@@ -51,7 +48,7 @@ class PortfolioSelector extends React.Component {
           >
             <MenuItem value=""><em>None</em></MenuItem>
             {
-              allPortfolioMetadata.map(portfolioMetdata =>
+              myPortfolioMetadata.map(portfolioMetdata =>
                 <MenuItem key={portfolioMetdata.id} value={portfolioMetdata.id}>{portfolioMetdata.name}</MenuItem>
               )
             }
@@ -63,13 +60,13 @@ class PortfolioSelector extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  allPortfolioMetadata: state.portfolios,
+  myPortfolioMetadata: state.portfolios,
 });
 
 const mapDispatchToProps = dispatch => {
   return {
-    gotPortfolios: (userId) => dispatch(gotPortfolios(1)),
-  }
+    fetchPortfolios: (userId) => dispatch(fetchPortfolios(userId)),
+  };
 };
 
 export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(PortfolioSelector));

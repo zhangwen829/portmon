@@ -4,8 +4,8 @@ module.exports = router;
 
 router.get('/user/:userId', async (req, res, next) => {
   try {
-    const portfolios =
-        await PortfolioMetadata.listPortfolioMetadataByUserId(req.params.Id);
+    const portfolios = await PortfolioMetadata.listPortfolioMetadataByUserId(
+        req.params.userId);
     res.json(portfolios);
   } catch (error) {
     next(error);
@@ -16,7 +16,7 @@ router.get('/user/:userId', async (req, res, next) => {
 router.post('/user/:userId', async (req, res, next) => {
   try {
     const created = await PortfolioMetadata.create(
-        {name: req.body.name, userId: req.params.id});
+        {name: req.body.name, userId: req.params.userId});
     res.json(created);
   } catch (error) {
     next(error);
