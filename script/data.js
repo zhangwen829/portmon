@@ -17,11 +17,15 @@ const dummySecurity = [
 const dummyPortfolioData = [
   {position: 100, portfolioMetadatumId: 1, securityId: 1},
   {position: 200, portfolioMetadatumId: 1, securityId: 3},
+  {position: 150, portfolioMetadatumId: 1, securityId: 5},
   {position: 50, portfolioMetadatumId: 2, securityId: 1},
   {position: 300, portfolioMetadatumId: 2, securityId: 4},
+  {position: 100, portfolioMetadatumId: 2, securityId: 2},
+  {position: 200, portfolioMetadatumId: 2, securityId: 6},
   {position: 150, portfolioMetadatumId: 3, securityId: 5},
+  {position: 150, portfolioMetadatumId: 3, securityId: 2},
   {position: 100, portfolioMetadatumId: 4, securityId: 2},
-  {position: 200, portfolioMetadatumId: 4, securityId: 6}
+  {position: 300, portfolioMetadatumId: 4, securityId: 6}
 
 ];
 
