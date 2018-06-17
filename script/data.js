@@ -8,7 +8,7 @@ const dummyUser = [
 const dummySecurity = [
   {ticker: 'GOOG', type: 'EQUITY'},
   {ticker: 'AMZN', type: 'EQUITY'},
-  {ticker: 'TWRT', type: 'EQUITY'},
+  {ticker: 'TWTR', type: 'EQUITY'},
   {ticker: 'FB', type: 'EQUITY'},
   {ticker: 'MSFT', type: 'EQUITY'},
   {ticker: 'EBAY', type: 'EQUITY'},
