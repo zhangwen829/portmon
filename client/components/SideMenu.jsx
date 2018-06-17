@@ -15,7 +15,13 @@ const styles = theme => ({
     display: 'flex',
   },
   list: {
-    backgroundColor: '#9E9E9E'
+    backgroundColor: '#212121'
+  },
+  icon: {
+    color: '#fafafa'
+  },
+  primary: {
+    color: '#fafafa'
   }
 });
 
@@ -26,21 +32,21 @@ const SideMenu = (props) => {
       <MenuList className={classes.list}>
         <MenuItem>
           <NavLink to="/user"><ListItem>
-            <ListItemIcon><AccountBox /></ListItemIcon>
-            <ListItemText inset primary="User" />
+            <ListItemIcon className={classes.icon}><AccountBox /></ListItemIcon>
+            <ListItemText classes={{ primary: classes.primary }} primary="User" />
           </ListItem></NavLink>
         </MenuItem>
         <MenuItem>
           <NavLink to="/portfolio"><ListItem>
-            <ListItemIcon><Assessment /></ListItemIcon>
-            <ListItemText inset primary="Portfolio" />
+            <ListItemIcon className={classes.icon}><Assessment /></ListItemIcon>
+            <ListItemText classes={{ primary: classes.primary }} primary="Portfolio" />
           </ListItem></NavLink>
         </MenuItem>
         <MenuItem>
           <NavLink to="/settings">
             <ListItem>
-              <ListItemIcon><Settings /></ListItemIcon>
-              <ListItemText inset primary="Settings" />
+              <ListItemIcon className={classes.icon}><Settings /></ListItemIcon>
+              <ListItemText classes={{ primary: classes.primary }} primary="Settings" />
             </ListItem></NavLink>
         </MenuItem>
       </MenuList>
