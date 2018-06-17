@@ -10,14 +10,18 @@ class Session {
    * Schedule the session to run every 5 seconds.
    */
   startToRun() {
-    this.scheduleJob = schedule.scheduleJob(
-        '*/5 * * * * *', () => { this.runOneIteration(); });
+    this.runOneIteration();
+    this.scheduleJob = schedule.scheduleJob('*/5 * * * * *', () => {
+      this.runOneIteration();
+    });
   }
 
   /**
    * Stop the session by canceling the schedule job.
    */
-  stopRunning() { this.scheduleJob.cancel(); }
+  stopRunning() {
+    this.scheduleJob.cancel();
+  }
 
   /**
    * Represents the work needs to be done in one run iteration (i.e. every 5

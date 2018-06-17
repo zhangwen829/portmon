@@ -12,14 +12,14 @@ const styles = theme => ({
   root: {
     margin: theme.spacing.unit * 5
   },
-  headColor: {
+  headBackground: {
     backgroundColor: '#212121'
   },
-  head: {
+  headText: {
     fontSize: 18,
     color: '#fafafa'
   },
-  cell: {
+  cellText: {
     fontSize: 15,
     color: '#424242'
   },
@@ -37,32 +37,22 @@ const MonitorTable = (props) => {
     <Paper className={classes.root}>
       <Table >
         <TableHead>
-          <TableRow className={classes.headColor}>
-            <TableCell className={classes.head}>Ticker</TableCell>
-            <TableCell className={classes.head} numeric>Position</TableCell>
-            <TableCell className={classes.head} numeric>Last Price</TableCell>
-            <TableCell className={classes.head}>Trend</TableCell>
+          <TableRow className={classes.headBackground}>
+            <TableCell className={classes.headText}>Ticker</TableCell>
+            <TableCell className={classes.headText} numeric>Position</TableCell>
+            <TableCell className={classes.headText} numeric>Last Price</TableCell>
+            <TableCell className={classes.headText}>Trend</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {
             Array.of(...sessionSecurities.values()).map((sessionSecurity, idx) => {
-              if (idx % 2 === 0) {
-                return (<TableRow className={classes.light} key={sessionSecurity.id}>
-                  <TableCell className={classes.cell}>{sessionSecurity.ticker}</TableCell>
-                  <TableCell className={classes.cell} numeric>{sessionSecurity.position}</TableCell>
-                  <TableCell className={classes.cell} numeric>{sessionSecurity.lastPrice}</TableCell>
-                  <TableCell><Trend data={[0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0]} /></TableCell>
-                </TableRow>)
-              } else {
-                return (<TableRow className={classes.dark} key={sessionSecurity.id}>
-                  <TableCell className={classes.cell}>{sessionSecurity.ticker}</TableCell>
-                  <TableCell className={classes.cell} numeric>{sessionSecurity.position}</TableCell>
-                  <TableCell className={classes.cell} numeric>{sessionSecurity.lastPrice}</TableCell>
-                  <TableCell><Trend data={[0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0]} /></TableCell>
-                </TableRow>)
-              }
-
+              return (<TableRow className={idx % 2 === 0 ? classes.light : classes.dark} key={sessionSecurity.id}>
+                <TableCell className={classes.cellText}>{sessionSecurity.ticker}</TableCell>
+                <TableCell className={classes.cellText} numeric>{sessionSecurity.position}</TableCell>
+                <TableCell className={classes.cellText} numeric>{sessionSecurity.lastPrice}</TableCell>
+                <TableCell><Trend data={[0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0]} /></TableCell>
+              </TableRow>);
             })
           }
         </TableBody>
