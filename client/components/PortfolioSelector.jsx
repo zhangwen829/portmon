@@ -4,7 +4,8 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import { withStyles } from '@material-ui/core/styles';
-
+import { connect } from 'react-redux';
+import { fetchPortfolios, clearSessionSecurities, setCurrentPortfolio, subscribePortfolio } from '../store/portfolio';
 
 const styles = theme => ({
   root: {
@@ -23,29 +24,34 @@ const styles = theme => ({
 
 
 class PortfolioSelector extends React.Component {
-  state = {
-    portfolio: '',
-  };
+
+  componentDidMount() {
+    this.props.fetchPortfolios(1);
+  }
 
   handleChange = event => {
-    this.setState({ portfolio: event.target.value });
+    this.props.setCurrentPortfolio(event.target.value);
+    this.props.clearSessionSecurities();
+    this.props.subscribePortfolio(event.target.value);
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, myPortfolioMetadata, currentPortfolioId } = this.props;
 
     return (
       <form className={classes.root}>
         <FormControl className={classes.formControl}>
           <InputLabel>My Portfolios</InputLabel>
           <Select
-            value={this.state.portfolio}
+            value={currentPortfolioId}
             onChange={this.handleChange}
           >
-            <MenuItem value=""><em>None</em></MenuItem>
-            <MenuItem value={1}>Portfolio #1</MenuItem>
-            <MenuItem value={2}>Portfolio #2</MenuItem>
-            <MenuItem value={3}>Portfolio #3</MenuItem>
+            <MenuItem value={-1}><em>None</em></MenuItem>
+            {
+              myPortfolioMetadata.map(portfolioMetdata =>
+                <MenuItem key={portfolioMetdata.id} value={portfolioMetdata.id}>{portfolioMetdata.name}</MenuItem>
+              )
+            }
           </Select>
         </FormControl>
       </form>
@@ -53,4 +59,18 @@ class PortfolioSelector extends React.Component {
   }
 }
 
-export default withStyles(styles)(PortfolioSelector);
+const mapStateToProps = (state) => ({
+  myPortfolioMetadata: state.portfolios.myPortfolios,
+  currentPortfolioId: state.portfolios.currentPortfolioId
+});
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchPortfolios: (userId) => dispatch(fetchPortfolios(userId)),
+    setCurrentPortfolio: (currentPortfolioId) => dispatch(setCurrentPortfolio(currentPortfolioId)),
+    subscribePortfolio: (currentPortfolioId) => dispatch(subscribePortfolio(currentPortfolioId)),
+    clearSessionSecurities: () => dispatch(clearSessionSecurities())
+  };
+};
+
+export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(PortfolioSelector));

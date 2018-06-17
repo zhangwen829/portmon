@@ -7,58 +7,71 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import { withStyles } from '@material-ui/core/styles';
 import Trend from 'react-trend';
-import io from 'socket.io-client';
-
+import { connect } from 'react-redux';
 const styles = theme => ({
   root: {
     margin: theme.spacing.unit * 5
   },
-  table: {
-    backgroundColor: '#9E9E9E'
+  headColor: {
+    backgroundColor: '#212121'
+  },
+  head: {
+    fontSize: 18,
+    color: '#fafafa'
   },
   cell: {
     fontSize: 15,
-    color: '#212121'
+    color: '#424242'
+  },
+  light: {
+    backgroundColor: '#eeeeee'
+  },
+  dark: {
+    backgroundColor: '#aeaeae'
   }
 });
 
 const MonitorTable = (props) => {
-  const { classes } = props;
+  const { classes, sessionSecurities } = props;
   return (
     <Paper className={classes.root}>
-      <Table className={classes.table}>
+      <Table >
         <TableHead>
-          <TableRow>
-            <TableCell className={classes.cell}>Ticker</TableCell>
-            <TableCell className={classes.cell} numeric>Position</TableCell>
-            <TableCell className={classes.cell} numeric>Last Price</TableCell>
-            <TableCell className={classes.cell}>Trend</TableCell>
+          <TableRow className={classes.headColor}>
+            <TableCell className={classes.head}>Ticker</TableCell>
+            <TableCell className={classes.head} numeric>Position</TableCell>
+            <TableCell className={classes.head} numeric>Last Price</TableCell>
+            <TableCell className={classes.head}>Trend</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          <TableRow>
-            <TableCell className={classes.cell}>GOOG</TableCell>
-            <TableCell className={classes.cell} numeric>10</TableCell>
-            <TableCell className={classes.cell} numeric>1001</TableCell>
-            <TableCell><Trend data={[0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0]} /></TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell className={classes.cell}>IBM</TableCell>
-            <TableCell className={classes.cell} numeric>100</TableCell>
-            <TableCell className={classes.cell} numeric>137</TableCell>
-            <TableCell><Trend data={[0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0]} /></TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell className={classes.cell}>AMZN</TableCell>
-            <TableCell className={classes.cell} numeric>38</TableCell>
-            <TableCell className={classes.cell} numeric>1907</TableCell>
-            <TableCell><Trend data={[0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0]} /></TableCell>
-          </TableRow>
+          {
+            Array.of(...sessionSecurities.values()).map((sessionSecurity, idx) => {
+              if (idx % 2 === 0) {
+                return (<TableRow className={classes.light} key={sessionSecurity.id}>
+                  <TableCell className={classes.cell}>{sessionSecurity.ticker}</TableCell>
+                  <TableCell className={classes.cell} numeric>{sessionSecurity.position}</TableCell>
+                  <TableCell className={classes.cell} numeric>{sessionSecurity.lastPrice}</TableCell>
+                  <TableCell><Trend data={[0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0]} /></TableCell>
+                </TableRow>)
+              } else {
+                return (<TableRow className={classes.dark} key={sessionSecurity.id}>
+                  <TableCell className={classes.cell}>{sessionSecurity.ticker}</TableCell>
+                  <TableCell className={classes.cell} numeric>{sessionSecurity.position}</TableCell>
+                  <TableCell className={classes.cell} numeric>{sessionSecurity.lastPrice}</TableCell>
+                  <TableCell><Trend data={[0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0]} /></TableCell>
+                </TableRow>)
+              }
+
+            })
+          }
         </TableBody>
       </Table>
     </Paper>
   );
 };
+const mapStateToProps = (state) => ({
+  sessionSecurities: state.portfolios.sessionSecurities,
+});
 
-
-export default withStyles(styles)(MonitorTable);
+export default withStyles(styles)(connect(mapStateToProps)(MonitorTable));
