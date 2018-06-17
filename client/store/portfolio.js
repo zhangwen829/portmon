@@ -1,22 +1,33 @@
 import axios from 'axios';
 
 const GET_PORTFOLIOS = 'GET_PORTFOLIOS';
+const CREATE_PORTFOLIO = 'CREATE_PORTFOLIO';
 
-const portfoliosByUser = [];
 
-const getPortfolios = portfolios => ({type: GET_PORTFOLIOS, portfolios});
+const getPortfolios = myPortfolios => ({type: GET_PORTFOLIOS, myPortfolios});
+const createPortfolio = newPortfolio =>
+    ({type: CREATE_PORTFOLIO, newPortfolio});
 
-export const gotPortfolios = (userId) => {
+export const fetchPortfolios = (userId) => {
   return async dispatch => {
-    const {data} = await axios.get(`/api/user/${userId}`);
+    const {data} = await axios.get(`/api/portfolios/user/${userId}`);
     dispatch(getPortfolios(data));
   };
 };
 
-const portfolioReducer = (state = portfoliosByUser, action) => {
+export const addPortfolio = (userId) => {
+  return async dispatch => {
+    const {data} = await axios.post(`/api/user/${userId}`);
+    dispatch(createPortfolio(data));
+  };
+};
+
+const portfolioReducer = (state = [], action) => {
   switch (action.type) {
     case GET_PORTFOLIOS:
-      return action.portfolios;
+      return action.myPortfolios;
+    case CREATE_PORTFOLIO:
+      return [...state, action.newPortfolio];
     default:
       return state;
   }

@@ -1,5 +1,6 @@
 import React from 'react';
-import { MonitorTable, PortfolioSelector } from '../components';
+import MonitorTable from './MonitorTable';
+import PortfolioSelector from './PortfolioSelector';
 
 
 class PortfolioContainer extends React.Component {
