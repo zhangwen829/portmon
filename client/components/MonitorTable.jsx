@@ -32,11 +32,11 @@ const styles = theme => ({
   },
   cellLastPriceUp: {
     fontSize: 15,
-    color: "#d50000"
+    color: "#388e3c"
   },
   cellLastPriceDown: {
     fontSize: 15,
-    color: "#388e3c"
+    color: "#d50000"
   },
   light: {
     backgroundColor: "#eeeeee"
