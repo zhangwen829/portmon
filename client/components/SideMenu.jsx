@@ -21,7 +21,8 @@ const styles = theme => ({
     color: '#fafafa'
   },
   primary: {
-    color: '#fafafa'
+    color: '#fafafa',
+    fontWeight: 500
   }
 });
 
