@@ -11,7 +11,7 @@ const styles = theme => ({
   root: {
     display: 'flex',
     flexWrap: 'wrap',
-    margin: theme.spacing.unit * 5
+    marginLeft: theme.spacing.unit * 5
   },
   formControl: {
     margin: theme.spacing.unit,

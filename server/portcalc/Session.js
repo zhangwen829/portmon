@@ -11,7 +11,7 @@ class Session {
    */
   startToRun() {
     this.runOneIteration();
-    this.scheduleJob = schedule.scheduleJob('*/5 * * * * *', () => {
+    this.scheduleJob = schedule.scheduleJob('*/2 * * * * *', () => {
       this.runOneIteration();
     });
   }

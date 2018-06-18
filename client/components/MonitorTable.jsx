@@ -8,9 +8,12 @@ import TableRow from '@material-ui/core/TableRow';
 import { withStyles } from '@material-ui/core/styles';
 import Trend from 'react-trend';
 import { connect } from 'react-redux';
+import ArrowUpward from '@material-ui/icons/ArrowUpward';
+import ArrowDownward from '@material-ui/icons/ArrowDownward';
+import ArrowForward from '@material-ui/icons/ArrowForward';
 const styles = theme => ({
   root: {
-    margin: theme.spacing.unit * 5
+    marginLeft: theme.spacing.unit * 5
   },
   headBackground: {
     backgroundColor: '#212121'
@@ -22,6 +25,14 @@ const styles = theme => ({
   cellText: {
     fontSize: 15,
     color: '#424242'
+  },
+  cellLastPriceUp: {
+    fontSize: 15,
+    color: '#d50000'
+  },
+  cellLastPriceDown: {
+    fontSize: 15,
+    color: '#388e3c'
   },
   light: {
     backgroundColor: '#eeeeee'
@@ -50,7 +61,11 @@ const MonitorTable = (props) => {
               return (<TableRow className={idx % 2 === 0 ? classes.light : classes.dark} key={sessionSecurity.id}>
                 <TableCell className={classes.cellText}>{sessionSecurity.ticker}</TableCell>
                 <TableCell className={classes.cellText} numeric>{sessionSecurity.position}</TableCell>
-                <TableCell className={classes.cellText} numeric>{sessionSecurity.lastPrice}</TableCell>
+                <TableCell className={
+                  sessionSecurity.upward === undefined ? classes.cellText : (sessionSecurity.upward ? classes.cellLastPriceUp : classes.cellLastPriceDown)
+                } numeric>
+                  {sessionSecurity.lastPrice} {sessionSecurity.upward === undefined ? <ArrowForward /> : (sessionSecurity.upward ? <ArrowUpward /> : <ArrowDownward />)}
+                </TableCell>
                 <TableCell><Trend data={[0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0]} /></TableCell>
               </TableRow>);
             })

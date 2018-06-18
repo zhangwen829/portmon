@@ -65,23 +65,26 @@ const portfolioReducer = (state = initialState, action) => {
       return {...state, currentPortfolioId: action.currentPortfolioId};
     case UPSERT_SESSION_SECURITIES: {
       const oldSessionSecurities = state.sessionSecurities;
-      const newSessionSecurities = new Map();
+      const prevSessionSecurities = new Map();
       oldSessionSecurities.forEach((value, key) => {
-        newSessionSecurities.set(key, value);
+        prevSessionSecurities.set(key, value);
       });
 
       action.sessionSecurities.forEach(sessionSecurity => {
-        if (newSessionSecurities.has(sessionSecurity.id)) {
-          newSessionSecurities.set(
+        if (prevSessionSecurities.has(sessionSecurity.id)) {
+          let prevSessionSecurity =
+              prevSessionSecurities.get(sessionSecurity.id);
+          let upward =
+              sessionSecurity.lastPrice > prevSessionSecurity.lastPrice;
+          prevSessionSecurities.set(
               sessionSecurity.id,
               Object.assign(
-                  {}, newSessionSecurities.get(sessionSecurity.id),
-                  sessionSecurity));
+                  prevSessionSecurity, {upward: upward}, sessionSecurity));
         } else {
-          newSessionSecurities.set(sessionSecurity.id, sessionSecurity);
+          prevSessionSecurities.set(sessionSecurity.id, sessionSecurity);
         }
       });
-      return {...state, sessionSecurities: newSessionSecurities};
+      return {...state, sessionSecurities: prevSessionSecurities};
     }
     case CLEAR_SESSION_SECURITIES: {
       if (state.socket) {
