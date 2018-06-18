@@ -9,12 +9,14 @@ class RandomWalkPriceFetcher {
     this.randomGeneratorFunc = randomGeneratorFunc;
   }
 
-  static create() { return new RandomWalkPriceFetcher(randomGeneratorFunc); }
+  static create() {
+    return new RandomWalkPriceFetcher(randomGeneratorFunc);
+  }
 
   fetch(tickers, lastPrices) {
     return lastPrices.map(lastPrice => {
       var n = this.randomGeneratorFunc();
-      if (lastPrice === undefined) {
+      if (lastPrice === undefined || lastPrice === 0) {
         return Math.floor(n * 200);
       }
       if (n < 0.3) {
