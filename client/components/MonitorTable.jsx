@@ -66,7 +66,7 @@ const MonitorTable = (props) => {
                 } numeric>
                   {sessionSecurity.lastPrice} {sessionSecurity.upward === undefined ? <ArrowForward /> : (sessionSecurity.upward ? <ArrowUpward /> : <ArrowDownward />)}
                 </TableCell>
-                <TableCell><Trend data={[0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0]} /></TableCell>
+                <TableCell><Trend data={sessionSecurity.trend} /></TableCell>
               </TableRow>);
             })
           }

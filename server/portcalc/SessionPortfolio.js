@@ -2,17 +2,33 @@ const {PortfolioData} = require('../db/models');
 const {RandomWalkPriceFetcher} = require('./PriceFetcher');
 
 class SessionSecurity {
-  set id(id) { this._id = id; }
-  get id() { return this._id; }
+  set id(id) {
+    this._id = id;
+  }
+  get id() {
+    return this._id;
+  }
 
-  set ticker(ticker) { this._ticker = ticker; }
-  get ticker() { return this._ticker; }
+  set ticker(ticker) {
+    this._ticker = ticker;
+  }
+  get ticker() {
+    return this._ticker;
+  }
 
-  set position(position) { this._position = position; }
-  get position() { return this._position; }
+  set position(position) {
+    this._position = position;
+  }
+  get position() {
+    return this._position;
+  }
 
-  set lastPrice(lastPrice) { this._lastPrice = lastPrice; }
-  get lastPrice() { return this._lastPrice; }
+  set lastPrice(lastPrice) {
+    this._lastPrice = lastPrice;
+  }
+  get lastPrice() {
+    return this._lastPrice;
+  }
 }
 
 class SessionPortfolio {
@@ -59,8 +75,9 @@ class SessionPortfolio {
     const allTickers = this.sessionSecurities.map(s => s.ticker);
     const allLastPrices = this.sessionSecurities.map(s => s.lastPrice);
     const newLastPrices = this.priceFetcher.fetch(allTickers, allLastPrices);
-    this.sessionSecurities.forEach(
-        (s, i) => { s.lastPrice = newLastPrices[i]; });
+    this.sessionSecurities.forEach((s, i) => {
+      s.lastPrice = newLastPrices[i];
+    });
   }
 
   /**
@@ -69,13 +86,17 @@ class SessionPortfolio {
    */
   publishDiff() {
     let toBePublished = [];
+    const randomArrayGenerator = (length, max) => [...new Array(length)].map(
+        () => Math.round(Math.random() * max));
     if (this.lastPublished.length === 0) {
       toBePublished = this.sessionSecurities.map(s => {
+        let trendData = randomArrayGenerator(20, 20);
         return {
           id: s.id,
           ticker: s.ticker,
           position: s.position,
-          lastPrice: s.lastPrice
+          lastPrice: s.lastPrice,
+          trend: trendData
         };
       });
     } else {
