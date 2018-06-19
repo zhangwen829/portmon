@@ -7,7 +7,9 @@ class Session {
   }
 
   /**
-   * Schedule the session to run every 5 seconds.
+   * Schedule the session to run every 2 seconds.
+   * Industry standard is 5-seconds interval between each price publish.
+   * Set it 2 seconds for demo purpose.
    */
   startToRun() {
     this.runOneIteration();
@@ -24,8 +26,7 @@ class Session {
   }
 
   /**
-   * Represents the work needs to be done in one run iteration (i.e. every 5
-   * second).
+   * Represents the work needs to be done in one run iteration
    *
    * @private
    */
