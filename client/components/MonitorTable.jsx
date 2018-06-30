@@ -65,8 +65,8 @@ const MonitorTable = props => {
         </TableHead>
         <TableBody>
           {Array.of(...sessionSecurities.values()).map(
-            (sessionSecurity, idx) => {
-              return (
+            (sessionSecurity, idx) =>
+              (
                 <TableRow
                   className={idx % 2 === 0 ? classes.light : classes.dark}
                   key={sessionSecurity.id}
@@ -101,8 +101,7 @@ const MonitorTable = props => {
                       autoDrawDuration={2000} autoDrawEasing="ease-out" gradient={['#00c6ff', '#F0F', '#FF0']} strokeWidth={3} />
                   </TableCell>
                 </TableRow>
-              );
-            }
+              )
           )}
         </TableBody>
       </Table>
