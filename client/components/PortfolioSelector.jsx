@@ -26,7 +26,7 @@ const styles = theme => ({
 class PortfolioSelector extends React.Component {
 
   componentDidMount() {
-    this.props.fetchPortfolios(1);
+    this.props.fetchPortfolios('d7306250-d891-11e8-bcce-7b49355ae619');
   }
 
   handleChange = event => {
@@ -37,7 +37,6 @@ class PortfolioSelector extends React.Component {
 
   render() {
     const { classes, myPortfolioMetadata, currentPortfolioId } = this.props;
-
     return (
       <form className={classes.root}>
         <FormControl className={classes.formControl}>

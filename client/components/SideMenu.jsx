@@ -10,7 +10,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import { withStyles } from '@material-ui/core/styles';
 import { withRouter, NavLink } from 'react-router-dom';
 
-const styles = theme => ({
+const styles = () => ({
   root: {
     display: 'flex',
   },
@@ -31,19 +31,21 @@ const SideMenu = (props) => {
   return (
     <div className={classes.root}>
       <MenuList className={classes.list}>
-        <MenuItem>
-          <NavLink to="/user"><ListItem>
-            <ListItemIcon className={classes.icon}><AccountBox /></ListItemIcon>
-            <ListItemText classes={{ primary: classes.primary }} primary="User" />
-          </ListItem></NavLink>
-        </MenuItem>
-        <MenuItem>
+        <MenuItem component="div">
           <NavLink to="/portfolio"><ListItem>
             <ListItemIcon className={classes.icon}><Assessment /></ListItemIcon>
             <ListItemText classes={{ primary: classes.primary }} primary="Portfolio" />
+          </ListItem>
+          </NavLink>
+        </MenuItem>
+        <MenuItem component="div">
+          <NavLink to="/user"><ListItem>
+            <ListItemIcon className={classes.icon}><AccountBox /></ListItemIcon>
+            <ListItemText classes={{ primary: classes.primary }} primary="User Profile" />
           </ListItem></NavLink>
         </MenuItem>
-        <MenuItem>
+
+        <MenuItem component="div">
           <NavLink to="/settings">
             <ListItem>
               <ListItemIcon className={classes.icon}><Settings /></ListItemIcon>
@@ -53,6 +55,6 @@ const SideMenu = (props) => {
       </MenuList>
     </div>
   );
-}
+};
 
 export default withRouter(withStyles(styles, { withTheme: true })(SideMenu));
