@@ -28,8 +28,8 @@ const AuthForm = props => {
         {error && error.response && <div> {error.response.data} </div>}
       </form>
     </div>
-  )
-}
+  );
+};
 
 
 const mapLogin = state => {
@@ -57,8 +57,8 @@ const mapDispatch = dispatch => {
       const password = evt.target.password.value;
       dispatch(auth(email, password, formName));
     }
-  }
-}
+  };
+};
 
 export const Login = connect(mapLogin, mapDispatch)(AuthForm);
 export const Signup = connect(mapSignup, mapDispatch)(AuthForm);

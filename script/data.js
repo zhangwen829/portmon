@@ -1,8 +1,8 @@
 /* eslint-disable */
 
 const dummyUser = [
-  { email: 'wen@email.com', firstName: 'Wen', lastName: 'Zhang' },
-  { email: 'kitty@email.com', firstName: 'kitty', lastName: 'Cat' }
+  { email: 'wen@email.com', firstName: 'Wen', lastName: 'Zhang', password: '12345' },
+  { email: 'kitty@email.com', firstName: 'kitty', lastName: 'Cat', password: '12345' }
 ];
 
 const dummySecurity = [
@@ -55,7 +55,7 @@ const dummyPortfolioData = [
 
 ];
 
-function dummyPortfolioMetadata(user1Id,user2Id) {
+function dummyPortfolioMetadata(user1Id, user2Id) {
   return [
     { name: 'Wen\'s Personal', userId: user1Id },
     { name: 'My Family\'s Holdings', userId: user1Id },

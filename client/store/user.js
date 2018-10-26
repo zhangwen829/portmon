@@ -1,4 +1,5 @@
 import axios from 'axios';
+import history from '../history';
 
 const GET_USER = 'GET_USER';
 const REMOVE_USER = 'REMOVE_USER';
@@ -22,7 +23,7 @@ export const auth = (email, password, method) => dispatch =>
     .then(
       res => {
         dispatch(getUser(res.data));
-        history.push('/portfolio');
+        history.push('/Home');
       },
       authError => {
         dispatch(getUser({ error: authError }));

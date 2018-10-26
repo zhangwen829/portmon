@@ -14,8 +14,8 @@ describe('PortfolioMetadata model', () => {
 
   describe('Class Methods', () => {
     describe('listPortfolioMetadataByUserId', () => {
-      const TEST_USER_1 = { email: 'user1@google.com', firstName: 'user1_first', lastName: 'user1_last' };
-      const TEST_USER_2 = { email: 'user2@google.com', firstName: 'user2_first', lastName: 'user2_last' };
+      const TEST_USER_1 = { email: 'user1@google.com', firstName: 'user1_first', lastName: 'user1_last', password: '123' };
+      const TEST_USER_2 = { email: 'user2@google.com', firstName: 'user2_first', lastName: 'user2_last', password: '123' };
       let TEST_USER_ID_1;
       let TEST_USER_ID_2;
       let TEST_USER_ID_3;

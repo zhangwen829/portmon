@@ -1,10 +1,11 @@
 import React from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import SideMenu from './SideMenu';
 import PortfolioContainer from './PortfolioContainer';
 import User from './User';
 import Settings from './Settings';
+
 
 const styles = () => ({
   root: {
@@ -12,7 +13,7 @@ const styles = () => ({
   },
 });
 
-const App = (props) => {
+const Home = (props) => {
   const { classes } = props;
   return (
     <div className={classes.root}>
@@ -22,11 +23,11 @@ const App = (props) => {
           <Route path="/portfolio" component={PortfolioContainer} />
           <Route path="/user" component={User} />
           <Route path="/settings" component={Settings} />
-          <Redirect to="/user" />
+          <Redirect to="/portfolio" />
         </Switch>
       </main>
     </div>
   );
 };
 
-export default withStyles(styles, { withTheme: true })(App);
+export default withRouter(withStyles(styles, { withTheme: true })(Home));
