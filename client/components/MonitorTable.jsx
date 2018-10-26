@@ -98,7 +98,7 @@ const MonitorTable = props => {
                   </TableCell>
                   <TableCell>
                     <Trend data={sessionSecurity.trend} autoDraw
-                      autoDrawDuration={1000} autoDrawEasing="ease-out" gradient={['#00c6ff', '#F0F', '#FF0']} strokeWidth={3} />
+                      gradient={['#00c6ff', '#F0F', '#FF0']} strokeWidth={3} />
                   </TableCell>
                 </TableRow>
               )

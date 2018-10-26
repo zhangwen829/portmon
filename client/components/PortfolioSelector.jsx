@@ -26,7 +26,7 @@ const styles = theme => ({
 class PortfolioSelector extends React.Component {
 
   componentDidMount() {
-    this.props.fetchPortfolios('d7306250-d891-11e8-bcce-7b49355ae619');
+    this.props.fetchPortfolios('f21704d0-d8c2-11e8-96e7-09d79944e192');
   }
 
   handleChange = event => {
