@@ -31,6 +31,15 @@ const SideMenu = (props) => {
   return (
     <div className={classes.root}>
       <MenuList className={classes.list}>
+
+        <MenuItem component="div">
+          <NavLink to="/overview"><ListItem>
+            <ListItemIcon className={classes.icon}><Assessment /></ListItemIcon>
+            <ListItemText classes={{ primary: classes.primary }} primary="Overview" />
+          </ListItem>
+          </NavLink>
+        </MenuItem>
+
         <MenuItem component="div">
           <NavLink to="/portfolio"><ListItem>
             <ListItemIcon className={classes.icon}><Assessment /></ListItemIcon>
@@ -38,10 +47,25 @@ const SideMenu = (props) => {
           </ListItem>
           </NavLink>
         </MenuItem>
+
         <MenuItem component="div">
-          <NavLink to="/user"><ListItem>
+          <NavLink to="/analysis"><ListItem>
             <ListItemIcon className={classes.icon}><AccountBox /></ListItemIcon>
-            <ListItemText classes={{ primary: classes.primary }} primary="User Profile" />
+            <ListItemText classes={{ primary: classes.primary }} primary="Analysis" />
+          </ListItem></NavLink>
+        </MenuItem>
+
+        <MenuItem component="div">
+          <NavLink to="/messages"><ListItem>
+            <ListItemIcon className={classes.icon}><AccountBox /></ListItemIcon>
+            <ListItemText classes={{ primary: classes.primary }} primary="Messages" />
+          </ListItem></NavLink>
+        </MenuItem>
+
+        <MenuItem component="div">
+          <NavLink to="/profile"><ListItem>
+            <ListItemIcon className={classes.icon}><AccountBox /></ListItemIcon>
+            <ListItemText classes={{ primary: classes.primary }} primary="My Profile" />
           </ListItem></NavLink>
         </MenuItem>
 

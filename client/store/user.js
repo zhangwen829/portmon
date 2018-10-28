@@ -23,13 +23,13 @@ export const auth = (email, password, method) => dispatch =>
     .then(
       res => {
         dispatch(getUser(res.data));
-        history.push('/Home');
+        history.push('/overview');
       },
       authError => {
         dispatch(getUser({ error: authError }));
       }
     )
-    .catch(dispatchOrHistoryErr => console.error(dispatchOrHistoryErr))
+    .catch(dispatchOrHistoryErr => console.error(dispatchOrHistoryErr));
 
 export const logout = () => dispatch =>
   axios

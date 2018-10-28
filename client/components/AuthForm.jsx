@@ -27,6 +27,7 @@ const AuthForm = props => {
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
+      {name === 'login' && <a href="/signup">Sign Up</a>}
     </div>
   );
 };

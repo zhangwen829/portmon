@@ -10,7 +10,7 @@ router.post('/', async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-})
+});
 
 router.put('/:id', async (req, res, next) => {
   try {
