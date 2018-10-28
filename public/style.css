@@ -1,8 +1,6 @@
 body {
-  background-color:white;
   margin:0;
-  /* background: linear-gradient(45deg,lightblue,lightgrey); */
-  /*background-image: url("background.jpg");*/
+  background: linear-gradient(45deg,#edeeef, #f2eee1); 
 }
 
 .home {
