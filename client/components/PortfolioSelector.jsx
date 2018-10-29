@@ -26,7 +26,7 @@ const styles = theme => ({
 class PortfolioSelector extends React.Component {
 
   componentDidMount() {
-    this.props.fetchPortfolios('c2df3660-d8c7-11e8-8705-9dfef989021f');
+    this.props.fetchPortfolios(this.props.user.id);
   }
 
   handleChange = event => {
@@ -59,6 +59,7 @@ class PortfolioSelector extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
+  user: state.user,
   myPortfolioMetadata: state.portfolios.myPortfolios,
   currentPortfolioId: state.portfolios.currentPortfolioId
 });

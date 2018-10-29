@@ -23,7 +23,7 @@ export const auth = (email, password, method) => dispatch =>
     .then(
       res => {
         dispatch(getUser(res.data));
-        history.push('/overview');
+        history.push('/portfolio');
       },
       authError => {
         dispatch(getUser({ error: authError }));
