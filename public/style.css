@@ -3,6 +3,57 @@ body {
   background: linear-gradient(45deg,#edeeef, #f2eee1); 
 }
 
-.home {
-  display:flex;
+.main {
+  display: flex;
+}
+
+.form-parent{
+  width: 30%;
+  margin: 200px 400px 400px 200px;
+  padding: 50px;
+  border: 10px solid #525456;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.form{
+  margin: 20px;
+  padding: 20px;
+}
+
+.input{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 10%;
+}
+
+.submit-button {
+  background-color: #555555;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 20px 2px;
+  cursor: pointer;
+}
+
+a {
+  margin-left: 80px;
+  color:#525456;
+}
+
+
+.right-body {
+  font-size: 20px;
+  font-family: sans-serif;
+  font-weight: bold;
+  color: #525456;
+  margin-left: 20px;
+  margin-top: 20px;
 }
