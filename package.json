@@ -7,7 +7,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "build-client": "webpack",
+    "build-client": "webpack -p",
     "build-client-watch": "webpack -w",
     "seed": "node script/seed.js",
     "start": "node server",
