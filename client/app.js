@@ -60,13 +60,10 @@ const mapState = state => {
   };
 };
 
-const mapDispatch = dispatch => {
-  return {
-    loadInitialData() {
-      dispatch(me());
-    }
-  };
-};
+const mapDispatch = dispatch => ({
+  loadInitialData: () => dispatch(me())
+});
+
 
 // The `withRouter` wrapper makes sure that updates are not blocked
 // when the url changes
