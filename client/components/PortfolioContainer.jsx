@@ -3,15 +3,13 @@ import MonitorTable from './MonitorTable';
 import PortfolioSelector from './PortfolioSelector';
 
 
-class PortfolioContainer extends React.Component {
-  render() {
-    return (
-      <div>
-        <PortfolioSelector />
-        <MonitorTable />
-      </div>
-    );
-  }
-}
+const PortfolioContainer = () => {
+  return (
+    <div>
+      <PortfolioSelector />
+      <MonitorTable />
+    </div>
+  );
+};
 
 export default PortfolioContainer;

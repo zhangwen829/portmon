@@ -1,18 +1,19 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Overview from '@material-ui/icons/Dns';
 import Portfolio from '@material-ui/icons/Assessment';
 import Analysis from '@material-ui/icons/DonutSmall';
 import Messages from '@material-ui/icons/Mail';
 import Profile from '@material-ui/icons/AccountBox';
 import Settings from '@material-ui/icons/Settings';
-import Logout from '@material-ui/icons/Adjust';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import MenuList from '@material-ui/core/MenuList';
 import MenuItem from '@material-ui/core/MenuItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { withStyles } from '@material-ui/core/styles';
-import { withRouter, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { logout } from '../store/user';
 
 const styles = () => ({
   root: {
@@ -27,11 +28,16 @@ const styles = () => ({
   primary: {
     color: '#fafafa',
     fontWeight: 500
+  },
+  logout: {
+    textAlign: 'center',
   }
 });
 
 const SideMenu = (props) => {
-  const { classes } = props;
+
+  const { classes, clickLogout } = props;
+
   return (
     <div className={classes.root}>
       <MenuList className={classes.list}>
@@ -82,15 +88,19 @@ const SideMenu = (props) => {
         </MenuItem>
 
         <MenuItem component="div">
-          <NavLink to="/logout">
-            <ListItem>
-              <ListItemIcon className={classes.icon}><Logout /></ListItemIcon>
-              <ListItemText classes={{ primary: classes.primary }} primary="Log Out" />
-            </ListItem></NavLink>
+          <ListItem>
+            <ListItemText onClick={() => clickLogout()} classes={{ primary: classes.primary }} primary="Log Out" className={classes.logout} />
+          </ListItem>
         </MenuItem>
       </MenuList>
     </div>
   );
 };
 
-export default withRouter(withStyles(styles, { withTheme: true })(SideMenu));
+
+const mapDispatch = dispatch => ({
+  clickLogout: () => dispatch(logout())
+});
+
+export default withStyles(styles, { withTheme: true })(connect(null, mapDispatch)(SideMenu));
+
