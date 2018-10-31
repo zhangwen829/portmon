@@ -1,7 +1,9 @@
-## PortMon is a Portfolio Management System.
+# PortMon 
 
-The app was deployed using [Heroku] (https://portmon.herokuapp.com)
+PortMom is a Portfolio Management System.
 
-Use the email 'wen@email.com' and password '12345' if you want to explore the site.
+The app was deployed using Heroku - https://portmon.herokuapp.com
 
-> Author: Wen Zhang
+Use the email "wen@email.com" and password "12345" if you want to explore the site.
+
+Author: Wen Zhang
