@@ -28,7 +28,6 @@ body {
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
-  border-radius: 10%;
 }
 
 .submit-button {
@@ -57,4 +56,33 @@ a {
   color: #525456;
   margin-left: 20px;
   margin-top: 20px;
+}
+
+h2 {
+display: block;
+font-size: 1.5em;
+margin-top: 0.83em;
+margin-bottom: 0.83em;
+margin-left: 0;
+margin-right: 0;
+font-weight: bold;
+text-align: center;
+font-family: sans-serif;
+}
+
+h4 { 
+  display: block;
+  font-size: 1em;
+  margin-top: 1.33em;
+  margin-bottom: 1.33em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+.chart-align {
+  display: flex;
+  flex-direction: row;
 }
