@@ -1,6 +1,6 @@
 # PortMon 
 
-PortMom is a Portfolio Management System.
+PortMom is a Portfolio Management System, using socket.io to publish security price every 2 seconds
 
 The app was deployed using Heroku - https://portmon.herokuapp.com
 
