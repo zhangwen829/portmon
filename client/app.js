@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { withRouter, Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Login, Signup } from './components/AuthForm';
 import { me } from './store/user';
@@ -41,8 +41,7 @@ class App extends Component {
               </Switch>
             </React.Fragment>
           )}
-          {/* Displays our Login component as a fallback */}
-          <Redirect to="/login" />
+          <Route component={Login} />
         </Switch>
       </div>
     );
