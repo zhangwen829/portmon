@@ -19,6 +19,7 @@ As a Software Engineer with a background in Accounting & Finance, I'm always pas
 ## Screenshot
 
 ![Screenshot](/public/pricePublish.png?raw=true "Price Publish")
+
 ![Screenshot](/public/dataVisualization.png?raw=true "Data Visualization")
 
 
